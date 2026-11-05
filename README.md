@@ -6,6 +6,8 @@ framework and no tracking.
 
 **Live:** <https://normurodov-org.github.io/odil-dev/>
 
+![Portfolio preview](assets/preview.jpg)
+
 ## Stack
 
 - Semantic HTML, hand-written CSS and vanilla JavaScript
