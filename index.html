@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odilbek Normurodov — Backend Developer</title>
+  <meta name="description" content="Odilbek Normurodov is a backend developer from Qarshi, Uzbekistan, building fast, secure APIs, integrations and digital products.">
+  <meta name="author" content="Odilbek Normurodov">
+  <meta name="theme-color" content="#f2efe7">
+  <script>
+    (function () {
+      var theme = 'light';
+      try {
+        var stored = localStorage.getItem('odilbek-theme');
+        if (stored === 'dark' || stored === 'light') theme = stored;
+        else if (window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+      } catch (error) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'dark' ? '#121110' : '#f2efe7');
+      window.setTimeout(function () {
+        if (window.__odilReady) return;
+        document.documentElement.classList.remove('js');
+        document.querySelectorAll('.line-inner, [data-intro], [data-reveal]').forEach(function (el) {
+          el.style.opacity = '';
+          el.style.transform = '';
+        });
+        var loader = document.getElementById('loader');
+        if (loader) loader.remove();
+        document.body.style.overflow = '';
+      }, 6000);
+    })();
+  </script>
+
+  <link rel="canonical" href="https://normurodov-org.github.io/odil-dev/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Odilbek Normurodov">
+  <meta property="og:title" content="Odilbek Normurodov — Backend Developer">
+  <meta property="og:description" content="Backend developer from Qarshi. Building the quiet systems behind good products.">
+  <meta property="og:url" content="https://normurodov-org.github.io/odil-dev/">
+  <meta property="og:image" content="https://normurodov-org.github.io/odil-dev/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Odilbek Normurodov — Backend Developer">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="uz_UZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Odilbek Normurodov — Backend Developer">
+  <meta name="twitter:description" content="Backend developer from Qarshi. Building the quiet systems behind good products.">
+  <meta name="twitter:image" content="https://normurodov-org.github.io/odil-dev/assets/og-image.jpg">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <noscript>
+    <style>
+      .menu-toggle, .theme-toggle, .lang-switch { display: none !important; }
+      .footer { margin-top: 48px; }
+    </style>
+  </noscript>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Odilbek Normurodov",
+      "url": "https://normurodov-org.github.io/odil-dev/",
+      "image": "https://normurodov-org.github.io/odil-dev/assets/og-image.jpg",
+      "jobTitle": "Backend Developer",
+      "description": "Backend developer from Qarshi, Uzbekistan, building APIs, integrations and digital products.",
+      "email": "mailto:normurodovodilbek3110@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Qarshi",
+        "addressCountry": "UZ"
+      },
+      "sameAs": [
+        "https://github.com/normurodov-org",
+        "https://t.me/normuzb",
+        "https://instagram.com/normuzb"
+      ],
+      "knowsAbout": ["Backend development", "REST APIs", "Node.js", "TypeScript", "PostgreSQL", "Redis", "Docker", "Linux"],
+      "knowsLanguage": ["uz", "en", "ru", "ar"]
+    }
+  </script>
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-top">
+        <span>Odilbek Normurodov</span>
+        <span>Portfolio / 2026</span>
+      </div>
+      <div class="loader-name"><span>Backend developer</span></div>
+      <div class="loader-bar"><span id="loader-bar"></span></div>
+      <div class="loader-bottom">
+        <span>Qarshi, Uzbekistan</span>
+        <span><span id="loader-percent">0</span>%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"><span class="cursor-label">View</span></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top">
+        <span class="brand-mark">ON</span>
+        <span class="brand-text">Odilbek<span class="brand-dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="#work" data-nav="work" data-i18n="nav.work">Work</a>
+        <a class="nav-link" href="#about" data-nav="about" data-i18n="nav.about">About</a>
+        <a class="nav-link" href="#services" data-nav="services" data-i18n="nav.services">Services</a>
+        <a class="nav-link" href="#contact" data-nav="contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="a11y.language">
+          <button class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" type="button" data-lang="uz" aria-pressed="false">UZ</button>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode" data-i18n-aria="theme.label">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M4.4 4.4l1.5 1.5M18.1 18.1l1.5 1.5M2.6 12h2.1M19.3 12h2.1M4.4 19.6l1.5-1.5M18.1 5.9l1.5-1.5"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4 8.6 8.6 0 1 0 20.6 14.2Z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" role="dialog" aria-hidden="true" aria-label="Menu" data-i18n-aria="menu.label" inert>
+    <nav class="menu-nav" aria-label="Mobile">
+      <a class="menu-link" href="#work" data-menu-link><span class="menu-index">01</span><span data-i18n="nav.work">Work</span></a>
+      <a class="menu-link" href="#about" data-menu-link><span class="menu-index">02</span><span data-i18n="nav.about">About</span></a>
+      <a class="menu-link" href="#services" data-menu-link><span class="menu-index">03</span><span data-i18n="nav.services">Services</span></a>
+      <a class="menu-link" href="#contact" data-menu-link><span class="menu-index">04</span><span data-i18n="nav.contact">Contact</span></a>
+    </nav>
+    <div class="menu-foot">
+      <a class="menu-email" href="mailto:normurodovodilbek3110@gmail.com">normurodovodilbek3110@gmail.com</a>
+      <div class="menu-socials">
+        <a href="https://github.com/normurodov-org" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://t.me/normuzb" target="_blank" rel="noopener">Telegram ↗</a>
+        <a href="https://instagram.com/normuzb" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+      <p class="menu-loc">Qarshi, Uzbekistan · <span data-clock="short">--:--</span> UZT</p>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-top">
+          <p class="eyebrow" data-intro>
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            <span data-i18n="hero.eyebrow">Backend developer — Qarshi, Uzbekistan</span>
+          </p>
+          <p class="hero-avail" data-intro><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.avail">Available for select projects</span></p>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner" data-i18n-html="hero.line1">The best <em>backend</em></span></span>
+          <span class="line"><span class="line-inner" data-i18n="hero.line2">is the one you</span></span>
+          <span class="line"><span class="line-inner" data-i18n-html="hero.line3">never <em>notice</em>.</span></span>
+        </h1>
+
+        <div class="hero-bottom">
+          <div class="hero-lead" data-intro>
+            <p data-i18n="hero.lead">I'm Odilbek, a backend developer from Qarshi. I design APIs, data and integrations that stay fast, secure and out of the way.</p>
+            <div class="hero-actions">
+              <a class="btn btn--dark" href="#work" data-magnetic>
+                <span data-i18n="hero.ctaWork">View selected work</span>
+                <span class="btn-arrow" aria-hidden="true">↘</span>
+              </a>
+              <a class="link-arrow" href="#contact">
+                <span data-i18n="hero.ctaContact">Get in touch</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-card" data-intro aria-label="Quick facts" data-i18n-aria="hero.card.label">
+            <div class="hero-card-top">
+              <span>system.status</span>
+              <span class="hero-card-live"><i aria-hidden="true"></i><span data-i18n="hero.card.live">online</span></span>
+            </div>
+            <dl class="hero-card-list">
+              <div><dt data-i18n="hero.card.role">role</dt><dd data-i18n="hero.card.roleValue">Backend</dd></div>
+              <div><dt data-i18n="hero.card.exp">experience</dt><dd data-i18n="hero.card.expValue">2+ years</dd></div>
+              <div><dt data-i18n="hero.card.time">local time</dt><dd><span data-clock>--:--:--</span> <span class="tz">UZT</span></dd></div>
+              <div><dt data-i18n="hero.card.place">based in</dt><dd data-i18n="hero.card.placeValue">Qarshi, UZ</dd></div>
+            </dl>
+            <div class="signal" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-foot" data-intro>
+          <a class="scroll-cue" href="#about">
+            <span class="scroll-line" aria-hidden="true"></span>
+            <span data-i18n="hero.scroll">Scroll to explore</span>
+          </a>
+          <span class="hero-year">Portfolio / 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="marquee-band" aria-hidden="true">
+      <div class="marquee-track" id="marquee-track">
+        <div class="marquee-group">
+          <span class="marquee-item">Node.js</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">REST APIs</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">PostgreSQL</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">TypeScript</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Redis</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Docker</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Linux</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Telegram Bot API</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Integrations</span><span class="marquee-star">✦</span>
+        </div>
+        <div class="marquee-group">
+          <span class="marquee-item">Node.js</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">REST APIs</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">PostgreSQL</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">TypeScript</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Redis</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Docker</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Linux</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Telegram Bot API</span><span class="marquee-star">✦</span>
+          <span class="marquee-item">Integrations</span><span class="marquee-star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <span class="section-index">01</span>
+          <span class="section-label" data-i18n="work.label">Work</span>
+          <span class="section-note" data-i18n="work.note">Live products, built end to end</span>
+        </header>
+
+        <div class="work-intro" data-reveal>
+          <h2 class="display" data-i18n-html="work.title">Selected <em>work</em></h2>
+          <p data-i18n="work.intro">Three products, three different problems. Each one is live — open a link and take a look.</p>
+        </div>
+
+        <div class="work-list">
+          <a class="project" href="https://www.neonshop.uz" target="_blank" rel="noopener" data-reveal
+             data-preview="assets/projects/neonshop.jpg" data-preview-name="NeonShop" data-preview-cat="E-commerce · Telegram" data-cursor="View">
+            <span class="project-index">01</span>
+            <div class="project-main">
+              <div class="project-title-row">
+                <h3>NeonShop</h3>
+                <span class="project-live"><i aria-hidden="true"></i><span data-i18n="work.live">Live</span></span>
+              </div>
+              <p class="project-desc" data-i18n="project1.desc">A Telegram-first digital storefront with automated order flow, product management and a clean buying experience.</p>
+              <div class="project-thumb" aria-hidden="true">
+                <picture>
+                  <source srcset="assets/projects/neonshop-720.webp" type="image/webp">
+                  <img src="assets/projects/neonshop-720.jpg" width="720" height="450" alt="" loading="lazy" decoding="async">
+                </picture>
+              </div>
+            </div>
+            <div class="project-tags"><span>Telegram</span><span>E-commerce</span><span>Automation</span></div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="project" href="https://painthack.uz" target="_blank" rel="noopener" data-reveal
+             data-preview="assets/projects/painthack.jpg" data-preview-name="PaintHack" data-preview-cat="Business · Catalogue" data-cursor="View">
+            <span class="project-index">02</span>
+            <div class="project-main">
+              <div class="project-title-row">
+                <h3>PaintHack</h3>
+                <span class="project-live"><i aria-hidden="true"></i><span data-i18n="work.live">Live</span></span>
+              </div>
+              <p class="project-desc" data-i18n="project2.desc">A product catalogue and lead-generation website for a professional car paint and equipment brand in Qarshi.</p>
+              <div class="project-thumb" aria-hidden="true">
+                <picture>
+                  <source srcset="assets/projects/painthack-720.webp" type="image/webp">
+                  <img src="assets/projects/painthack-720.jpg" width="720" height="450" alt="" loading="lazy" decoding="async">
+                </picture>
+              </div>
+            </div>
+            <div class="project-tags"><span>Catalogue</span><span>Responsive</span><span>SEO</span></div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="project" href="https://iqbol-restaurant.uz" target="_blank" rel="noopener" data-reveal
+             data-preview="assets/projects/iqbol.jpg" data-preview-name="IQBOL" data-preview-cat="Hospitality · Booking" data-cursor="View">
+            <span class="project-index">03</span>
+            <div class="project-main">
+              <div class="project-title-row">
+                <h3>IQBOL</h3>
+                <span class="project-live"><i aria-hidden="true"></i><span data-i18n="work.live">Live</span></span>
+              </div>
+              <p class="project-desc" data-i18n="project3.desc">A warm, multilingual restaurant site with a full digital menu, gallery, reviews and a table-booking flow.</p>
+              <div class="project-thumb" aria-hidden="true">
+                <picture>
+                  <source srcset="assets/projects/iqbol-720.webp" type="image/webp">
+                  <img src="assets/projects/iqbol-720.jpg" width="720" height="450" alt="" loading="lazy" decoding="async">
+                </picture>
+              </div>
+            </div>
+            <div class="project-tags"><span>Menu</span><span>Booking</span><span>Multilingual</span></div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="work-more" data-reveal>
+          <a class="link-arrow" href="https://github.com/normurodov-org" target="_blank" rel="noopener">
+            <span data-i18n="work.more">More projects on GitHub</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <span class="section-index">02</span>
+          <span class="section-label" data-i18n="about.label">About</span>
+          <span class="section-note" data-i18n="about.note">A short introduction</span>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-sticky">
+            <h2 class="about-title" data-i18n-html="about.title" data-reveal>A developer with a soft spot for <em>quiet, reliable</em> software.</h2>
+            <p class="about-status" data-reveal><span class="status-dot" aria-hidden="true"></span><span data-i18n="about.status">Currently open to freelance, internships and junior backend roles.</span></p>
+          </div>
+
+          <div class="about-body">
+            <p class="about-big" data-i18n="about.p1" data-reveal>I'm Odilbek Normurodov, a backend developer based in Qarshi. For the past two years I've been building APIs, storefronts, booking flows and integrations — mostly the parts users never see, but always feel when they're missing.</p>
+            <p class="about-small" data-i18n="about.p2" data-reveal>I care about clean architecture, fast response times and interfaces that respect people's time. When I'm not shipping, I'm usually reading about systems design, learning something new, or practising Arabic.</p>
+
+            <div class="stats" data-reveal>
+              <div class="stat">
+                <span class="stat-num"><span data-count="2" data-pad="2">02</span><span class="stat-plus">+</span></span>
+                <span class="stat-label" data-i18n="stat.experience">Years of experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num"><span data-count="3" data-pad="2">03</span></span>
+                <span class="stat-label" data-i18n="stat.projects">Projects shipped</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num"><span data-count="4" data-pad="2">04</span></span>
+                <span class="stat-label" data-i18n="stat.languages">Languages spoken</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num"><span data-count="24">24</span><span class="stat-unit">h</span></span>
+                <span class="stat-label" data-i18n="stat.reply">Reply time</span>
+              </div>
+            </div>
+
+            <div class="languages" data-reveal>
+              <p class="mini-label" data-i18n="about.languages">Languages I speak</p>
+              <div class="lang-grid">
+                <span class="lang-pill"><span class="lang-code">UZ</span>O‘zbekcha</span>
+                <span class="lang-pill"><span class="lang-code">EN</span>English</span>
+                <span class="lang-pill"><span class="lang-code">RU</span>Русский</span>
+                <span class="lang-pill lang-ar" dir="rtl" lang="ar"><span class="lang-code">AR</span>العربية</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <span class="section-index">03</span>
+          <span class="section-label" data-i18n="services.label">Services</span>
+          <span class="section-note" data-i18n="services.note">From first sketch to production</span>
+        </header>
+
+        <div class="services-layout">
+          <div class="services-heading" data-reveal>
+            <h2 class="display" data-i18n-html="services.title">How I can <em>help</em></h2>
+            <p data-i18n="services.intro">From idea to a working product — I take care of the backend side, the integrations and the details that keep everything running.</p>
+          </div>
+
+          <div class="service-list">
+            <article class="service" data-reveal>
+              <span class="service-index">01</span>
+              <div>
+                <h3 data-i18n="service1.title">Backend architecture</h3>
+                <p data-i18n="service1.desc">REST APIs, authentication, data models and business logic that stay understandable as the product grows.</p>
+                <div class="service-tags"><span>REST APIs</span><span>Auth</span><span>PostgreSQL</span></div>
+              </div>
+            </article>
+
+            <article class="service" data-reveal>
+              <span class="service-index">02</span>
+              <div>
+                <h3 data-i18n="service2.title">Integrations &amp; automation</h3>
+                <p data-i18n="service2.desc">Telegram bots, payment flows, webhooks and third-party services connected without the duct tape.</p>
+                <div class="service-tags"><span>Telegram API</span><span>Webhooks</span><span>Payments</span></div>
+              </div>
+            </article>
+
+            <article class="service" data-reveal>
+              <span class="service-index">03</span>
+              <div>
+                <h3 data-i18n="service3.title">Performance &amp; deployment</h3>
+                <p data-i18n="service3.desc">Caching, logging, Docker and Linux servers tuned for fast, predictable releases.</p>
+                <div class="service-tags"><span>Redis</span><span>Docker</span><span>Linux</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="toolbox" data-reveal>
+          <p class="mini-label" data-i18n="toolbox.label">Tools I reach for</p>
+          <div class="tool-chips">
+            <span>Node.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Redis</span>
+            <span>Docker</span><span>Linux</span><span>Git</span><span>REST APIs</span>
+            <span>Telegram Bot API</span><span>Nginx</span><span>Webhooks</span><span>CI / CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <header class="contact-head">
+          <div class="section-head" data-reveal>
+            <span class="section-index">04</span>
+            <span class="section-label" data-i18n="contact.label">Contact</span>
+            <span class="section-note" data-i18n="contact.note">Let's work together</span>
+          </div>
+
+          <div class="contact-heading" data-reveal>
+            <h2 class="display" data-i18n-html="contact.title">Have an idea?<br><em>Let's build it.</em></h2>
+            <p data-i18n="contact.intro">A project, an idea, or just a question? My inbox is open — and I usually reply within a day.</p>
+          </div>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info" data-reveal>
+            <p class="mini-label" data-i18n="contact.email">Email</p>
+            <div class="email-row">
+              <a class="email-link" href="mailto:normurodovodilbek3110@gmail.com">normurodovodilbek3110@gmail.com</a>
+              <button class="copy-btn" type="button" id="copy-email" aria-label="Copy email" data-i18n-aria="contact.copy">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="5.5" y="5.5" width="8" height="8" rx="1.5" stroke="currentColor"/>
+                  <path d="M10.5 5.5V3.5C10.5 2.67 9.83 2 9 2H3.5C2.67 2 2 2.67 2 3.5V9c0 .83.67 1.5 1.5 1.5h2" stroke="currentColor"/>
+                </svg>
+              </button>
+            </div>
+            <p class="contact-reply"><span class="status-dot" aria-hidden="true"></span><span data-i18n="contact.reply">Usually replies within a day.</span></p>
+
+            <div class="social-list">
+              <a href="https://t.me/normuzb" target="_blank" rel="noopener">
+                <span class="social-name">Telegram</span>
+                <span class="social-handle">@normuzb</span>
+                <span class="social-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a href="https://instagram.com/normuzb" target="_blank" rel="noopener">
+                <span class="social-name">Instagram</span>
+                <span class="social-handle">@normuzb</span>
+                <span class="social-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a href="https://github.com/normurodov-org" target="_blank" rel="noopener">
+                <span class="social-name">GitHub</span>
+                <span class="social-handle">normurodov-org</span>
+                <span class="social-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="contact-place">
+              <span class="contact-place-label" data-i18n="contact.place">Based in</span>
+              <span>Qarshi, Uzbekistan</span>
+              <span class="contact-place-time"><span data-clock="short">--:--</span> UZT</span>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contact-form" novalidate data-reveal>
+            <div class="form-row">
+              <label class="field">
+                <span data-i18n="contact.form.name">Your name</span>
+                <input type="text" name="name" placeholder="Your name" data-i18n-placeholder="contact.form.namePh" autocomplete="name" maxlength="80" required>
+              </label>
+              <label class="field">
+                <span data-i18n="contact.form.emailLabel">Email address</span>
+                <input type="email" name="email" placeholder="you@example.com" data-i18n-placeholder="contact.form.emailPh" autocomplete="email" maxlength="120" required>
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="contact.form.message">Your message</span>
+              <textarea name="message" rows="4" placeholder="Tell me about the project, timeline and goals…" data-i18n-placeholder="contact.form.messagePh" maxlength="1500" required></textarea>
+            </label>
+            <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <noscript>
+              <p class="form-noscript">This form needs JavaScript. You can email me directly at
+                <a href="mailto:normurodovodilbek3110@gmail.com">normurodovodilbek3110@gmail.com</a>.</p>
+            </noscript>
+
+            <div class="form-foot">
+              <button class="btn btn--light" type="submit" data-magnetic>
+                <span data-i18n="contact.form.submit">Send message</span>
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </button>
+              <p class="form-hint" data-i18n="contact.form.hint">This opens your email app — no data is stored.</p>
+            </div>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <footer class="footer">
+          <div class="footer-main">
+            <div class="footer-brand">
+              <a class="brand" href="#top">
+                <span class="brand-mark">ON</span>
+                <span class="brand-text">Odilbek<span class="brand-dot">.</span></span>
+              </a>
+              <p class="footer-tagline" data-i18n="footer.tagline">Backend developer building quiet, reliable systems.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer">
+              <a href="#work" data-i18n="nav.work">Work</a>
+              <a href="#about" data-i18n="nav.about">About</a>
+              <a href="#services" data-i18n="nav.services">Services</a>
+              <a href="#contact" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="footer-socials">
+              <a href="https://github.com/normurodov-org" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+              <a href="https://t.me/normuzb" target="_blank" rel="noopener">Telegram <span aria-hidden="true">↗</span></a>
+              <a href="mailto:normurodovodilbek3110@gmail.com">Email <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>© 2026 Odilbek Normurodov</p>
+            <p class="footer-mid">Qarshi, UZ · <span data-clock="short">--:--</span> <span class="tz">UZT</span> · <span data-i18n="footer.note">Built from scratch in Qarshi.</span></p>
+            <button class="footer-top" type="button" id="to-top"><span data-i18n="footer.top">Back to top</span> <span aria-hidden="true">↑</span></button>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="work-preview" id="work-preview" aria-hidden="true">
+    <img src="assets/projects/neonshop-720.jpg" alt="" decoding="async">
+    <div class="work-preview-meta">
+      <span class="wp-name">NeonShop</span>
+      <span class="wp-cat">E-commerce · Telegram</span>
+    </div>
+  </div>
+
+  <script src="vendor/lenis.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
