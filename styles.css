@@ -1389,6 +1389,8 @@ html[data-theme='light'] .project-thumb {
    About
 ------------------------------------------------------------------ */
 
+.about-grid > * { min-width: 0; }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1478,13 +1480,15 @@ html[data-theme='light'] .project-thumb {
    Services
 ------------------------------------------------------------------ */
 
+.services-layout > * { min-width: 0; }
+
 .services-layout {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: clamp(40px, 6vw, 90px);
   align-items: start;
 }
-.services-heading { position: sticky; top: 118px; }
+.services-heading { position: relative; }
 .services-heading p {
   margin-top: 20px;
   max-width: 34ch;
