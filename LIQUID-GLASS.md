@@ -462,8 +462,12 @@ the web you handle it:
 
 ## 14. Applying this to the existing portfolio
 
-`glass/` is a separate page, so nothing you already have is at risk. If you want
-to move the main site over, do it in this order:
+> **Status: done.** The live site now uses this system in `index.html`,
+> `styles.css` and `main.js`. The steps below are the order it was done in, and
+> the order to follow if you ever need to rebuild it. `glass/` remains as a
+> second, standalone implementation of the same language.
+
+If you are moving another page over, do it in this order:
 
 1. **Add the wallpaper.** The current palette is warm paper on a flat background.
    Glass needs depth: keep your cream and add two very large, blurred, warm
@@ -508,7 +512,11 @@ Before shipping:
 ## 16. Files
 
 ```
-glass/index.html    the page (content + structure)
+index.html          the live site — now built on this material
+styles.css          its design system (wallpaper, glass, chrome, motion)
+main.js             i18n, theme circle, pointer light, scroll chrome
+
+glass/index.html    the original standalone study (same language, own CSS/JS)
 glass/glass.css     material, type, layout, motion, a11y, responsive
 glass/glass.js      pointer light, magnetism, reveals, counters, clock,
                     scroll chrome, view-transition theme switch

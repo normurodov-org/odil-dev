@@ -6,7 +6,7 @@
   <title>Odilbek Normurodov — Backend Developer</title>
   <meta name="description" content="Odilbek Normurodov is a backend developer from Qarshi, Uzbekistan, building fast, secure APIs, integrations and digital products.">
   <meta name="author" content="Odilbek Normurodov">
-  <meta name="theme-color" content="#f2efe7">
+  <meta name="theme-color" content="#f4f1ea">
   <script>
     (function () {
       var theme = 'light';
@@ -19,7 +19,7 @@
       }
       document.documentElement.dataset.theme = theme;
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', theme === 'dark' ? '#121110' : '#f2efe7');
+      if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b0a09' : '#f4f1ea');
       window.setTimeout(function () {
         if (window.__odilReady) return;
         document.documentElement.classList.remove('js');
@@ -97,6 +97,25 @@
 </head>
 <body>
 
+  <div class="wallpaper" aria-hidden="true">
+    <div class="wallpaper__layer wallpaper__layer--light">
+      <span class="orb orb--paper"></span>
+      <span class="orb orb--lilac"></span>
+      <span class="orb orb--mint"></span>
+      <span class="orb orb--rose"></span>
+    </div>
+    <div class="wallpaper__layer wallpaper__layer--dark">
+      <span class="orb orb--copper"></span>
+      <span class="orb orb--violet"></span>
+      <span class="orb orb--teal"></span>
+      <span class="orb orb--rose"></span>
+    </div>
+    <div class="wallpaper__grain"></div>
+    <div class="wallpaper__vignette"></div>
+  </div>
+
+  <div class="scroll-edge" aria-hidden="true"></div>
+
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader-inner">
       <div class="loader-top">
@@ -112,14 +131,12 @@
     </div>
   </div>
 
-  <div class="cursor" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"><span class="cursor-label">View</span></div>
   <div class="progress" aria-hidden="true"><span></span></div>
 
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <header class="site-header" id="site-header">
-    <div class="container nav-shell">
+    <div class="container nav-shell glass">
       <a class="brand" href="#top">
         <span class="brand-mark">ON</span>
         <span class="brand-text">Odilbek<span class="brand-dot">.</span></span>
@@ -141,30 +158,10 @@
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M4.4 4.4l1.5 1.5M18.1 18.1l1.5 1.5M2.6 12h2.1M19.3 12h2.1M4.4 19.6l1.5-1.5M18.1 5.9l1.5-1.5"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4 8.6 8.6 0 1 0 20.6 14.2Z"/></svg>
         </button>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
-          <span></span><span></span>
-        </button>
+        <a class="btn btn--dark btn--hire" href="#contact"><span data-i18n="cta.hire">Hire me</span></a>
       </div>
     </div>
   </header>
-
-  <div class="menu" id="menu" role="dialog" aria-hidden="true" aria-label="Menu" data-i18n-aria="menu.label" inert>
-    <nav class="menu-nav" aria-label="Mobile">
-      <a class="menu-link" href="#work" data-menu-link><span class="menu-index">01</span><span data-i18n="nav.work">Work</span></a>
-      <a class="menu-link" href="#about" data-menu-link><span class="menu-index">02</span><span data-i18n="nav.about">About</span></a>
-      <a class="menu-link" href="#services" data-menu-link><span class="menu-index">03</span><span data-i18n="nav.services">Services</span></a>
-      <a class="menu-link" href="#contact" data-menu-link><span class="menu-index">04</span><span data-i18n="nav.contact">Contact</span></a>
-    </nav>
-    <div class="menu-foot">
-      <a class="menu-email" href="mailto:normurodovodilbek3110@gmail.com">normurodovodilbek3110@gmail.com</a>
-      <div class="menu-socials">
-        <a href="https://github.com/normurodov-org" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://t.me/normuzb" target="_blank" rel="noopener">Telegram ↗</a>
-        <a href="https://instagram.com/normuzb" target="_blank" rel="noopener">Instagram ↗</a>
-      </div>
-      <p class="menu-loc">Qarshi, Uzbekistan · <span data-clock="short">--:--</span> UZT</p>
-    </div>
-  </div>
 
   <main id="main" tabindex="-1">
     <section class="hero" id="top">
@@ -198,7 +195,7 @@
             </div>
           </div>
 
-          <aside class="hero-card" data-intro aria-label="Quick facts" data-i18n-aria="hero.card.label">
+          <aside class="hero-card glass" data-intro aria-label="Quick facts" data-i18n-aria="hero.card.label">
             <div class="hero-card-top">
               <span>system.status</span>
               <span class="hero-card-live"><i aria-hidden="true"></i><span data-i18n="hero.card.live">online</span></span>
@@ -266,65 +263,68 @@
         </div>
 
         <div class="work-list">
-          <a class="project" href="https://www.neonshop.uz" target="_blank" rel="noopener" data-reveal
-             data-preview="assets/projects/neonshop.jpg" data-preview-name="NeonShop" data-preview-cat="E-commerce · Telegram" data-cursor="View">
+          <a class="project" href="https://iqbol-restaurant.uz" target="_blank" rel="noopener" data-reveal>
+            <div class="project-thumb" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="assets/projects/iqbol-720.webp 720w, assets/projects/iqbol-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 1180px">
+                <img src="assets/projects/iqbol.jpg" width="1440" height="900" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <span class="project-index">01</span>
-            <div class="project-main">
-              <div class="project-title-row">
-                <h3>NeonShop</h3>
-                <span class="project-live"><i aria-hidden="true"></i><span data-i18n="work.live">Live</span></span>
-              </div>
-              <p class="project-desc" data-i18n="project1.desc">A Telegram-first digital storefront with automated order flow, product management and a clean buying experience.</p>
-              <div class="project-thumb" aria-hidden="true">
-                <picture>
-                  <source srcset="assets/projects/neonshop-720.webp" type="image/webp">
-                  <img src="assets/projects/neonshop-720.jpg" width="720" height="450" alt="" loading="lazy" decoding="async">
-                </picture>
-              </div>
-            </div>
-            <div class="project-tags"><span>Telegram</span><span>E-commerce</span><span>Automation</span></div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <a class="project" href="https://painthack.uz" target="_blank" rel="noopener" data-reveal
-             data-preview="assets/projects/painthack.jpg" data-preview-name="PaintHack" data-preview-cat="Business · Catalogue" data-cursor="View">
-            <span class="project-index">02</span>
-            <div class="project-main">
-              <div class="project-title-row">
-                <h3>PaintHack</h3>
-                <span class="project-live"><i aria-hidden="true"></i><span data-i18n="work.live">Live</span></span>
-              </div>
-              <p class="project-desc" data-i18n="project2.desc">A product catalogue and lead-generation website for a professional car paint and equipment brand in Qarshi.</p>
-              <div class="project-thumb" aria-hidden="true">
-                <picture>
-                  <source srcset="assets/projects/painthack-720.webp" type="image/webp">
-                  <img src="assets/projects/painthack-720.jpg" width="720" height="450" alt="" loading="lazy" decoding="async">
-                </picture>
-              </div>
-            </div>
-            <div class="project-tags"><span>Catalogue</span><span>Responsive</span><span>SEO</span></div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <a class="project" href="https://iqbol-restaurant.uz" target="_blank" rel="noopener" data-reveal
-             data-preview="assets/projects/iqbol.jpg" data-preview-name="IQBOL" data-preview-cat="Hospitality · Booking" data-cursor="View">
-            <span class="project-index">03</span>
             <div class="project-main">
               <div class="project-title-row">
                 <h3>IQBOL</h3>
                 <span class="project-live"><i aria-hidden="true"></i><span data-i18n="work.live">Live</span></span>
               </div>
               <p class="project-desc" data-i18n="project3.desc">A warm, multilingual restaurant site with a full digital menu, gallery, reviews and a table-booking flow.</p>
-              <div class="project-thumb" aria-hidden="true">
-                <picture>
-                  <source srcset="assets/projects/iqbol-720.webp" type="image/webp">
-                  <img src="assets/projects/iqbol-720.jpg" width="720" height="450" alt="" loading="lazy" decoding="async">
-                </picture>
-              </div>
             </div>
             <div class="project-tags"><span>Menu</span><span>Booking</span><span>Multilingual</span></div>
             <span class="project-arrow" aria-hidden="true">↗</span>
           </a>
+
+          <article class="project project--private" data-reveal>
+            <div class="project-thumb" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="assets/projects/painthack-720.webp 720w, assets/projects/painthack-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 560px">
+                <img src="assets/projects/painthack.jpg" width="1440" height="900" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <span class="project-index">02</span>
+            <div class="project-main">
+              <div class="project-title-row">
+                <h3>PaintHack</h3>
+                <span class="project-private">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.6" rx="1.7"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/></svg>
+                  <span data-i18n="work.private">Private</span>
+                </span>
+              </div>
+              <p class="project-desc" data-i18n="project2.desc">A product catalogue and lead-generation website for a professional car paint and equipment brand in Qarshi.</p>
+            </div>
+            <div class="project-tags"><span>Catalogue</span><span>Responsive</span><span>SEO</span></div>
+            <span class="project-arrow project-arrow--lock" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.6" rx="1.7"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/></svg></span>
+          </article>
+
+          <article class="project project--private" data-reveal>
+            <div class="project-thumb" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="assets/projects/neonshop-720.webp 720w, assets/projects/neonshop-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 560px">
+                <img src="assets/projects/neonshop.jpg" width="1440" height="900" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <span class="project-index">03</span>
+            <div class="project-main">
+              <div class="project-title-row">
+                <h3>NeonShop</h3>
+                <span class="project-private">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.6" rx="1.7"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/></svg>
+                  <span data-i18n="work.private">Private</span>
+                </span>
+              </div>
+              <p class="project-desc" data-i18n="project1.desc">A Telegram-first digital storefront with automated order flow, product management and a clean buying experience.</p>
+            </div>
+            <div class="project-tags"><span>Telegram</span><span>E-commerce</span><span>Automation</span></div>
+            <span class="project-arrow project-arrow--lock" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.6" rx="1.7"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/></svg></span>
+          </article>
         </div>
 
         <div class="work-more" data-reveal>
@@ -561,15 +561,27 @@
     </section>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <nav class="tabbar glass" id="tabbar" aria-label="Sections">
+    <span class="tabbar__pill" aria-hidden="true"></span>
+    <a href="#work" data-nav="work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg>
+      <span data-i18n="nav.work">Work</span>
+    </a>
+    <a href="#about" data-nav="about">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c.6-3.6 3.4-5.4 7-5.4s6.4 1.8 7 5.4"/></svg>
+      <span data-i18n="nav.about">About</span>
+    </a>
+    <a href="#services" data-nav="services">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 13.7 8l4.8 1.7-4.8 1.7L12 16.2l-1.7-4.8L5.5 9.7 10.3 8 12 3.2Z"/><path d="M18.4 15.2 19.2 17.5l2.3.8-2.3.8-.8 2.3-.8-2.3-2.3-.8 2.3-.8.8-2.3Z"/></svg>
+      <span data-i18n="nav.services">Services</span>
+    </a>
+    <a href="#contact" data-nav="contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3.2"/><path d="m4.5 8 6.4 4.4a2 2 0 0 0 2.2 0L19.5 8"/></svg>
+      <span data-i18n="nav.contact">Contact</span>
+    </a>
+  </nav>
 
-  <div class="work-preview" id="work-preview" aria-hidden="true">
-    <img src="assets/projects/neonshop-720.jpg" alt="" decoding="async">
-    <div class="work-preview-meta">
-      <span class="wp-name">NeonShop</span>
-      <span class="wp-cat">E-commerce · Telegram</span>
-    </div>
-  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="vendor/lenis.min.js"></script>
   <script src="vendor/gsap.min.js"></script>

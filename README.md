@@ -12,8 +12,8 @@ framework and no tracking.
 
 - Semantic HTML, hand-written CSS and vanilla JavaScript
 - [Lenis](https://github.com/darkroomengineering/lenis) for smooth scrolling
-- [GSAP](https://gsap.com/) + ScrollTrigger for reveals, counters and the
-  floating project preview
+- [GSAP](https://gsap.com/) + ScrollTrigger for the entrance sequence,
+  reveals and counters
 - Self-hosted **Inter Tight** and **Instrument Serif** (no Google Fonts)
 - Everything is vendored in `vendor/` — the site has no runtime CDN dependency
 
@@ -33,13 +33,15 @@ and `fetch`-free assets load with the right headers. Double-clicking
 ```
 index.html            markup, metadata, copy keys
 styles.css            design tokens, layout, responsive rules, themes
-main.js               i18n, theme, menu, reveals, clock, form, cursor
+main.js               i18n, theme, tab bar, reveals, clock, form, light
 vendor/               Lenis, GSAP and ScrollTrigger (local copies)
 assets/fonts/         Inter Tight + Instrument Serif (woff2)
 assets/projects/      project screenshots (full + 720px JPEG/WebP variants)
 assets/favicon.svg    logo mark
 assets/favicon-32.png, assets/apple-touch-icon.png
 assets/og-image.jpg   1200×630 social preview
+glass/                standalone Liquid Glass study (reference implementation)
+LIQUID-GLASS.md       the material + motion playbook
 404.html              self-contained GitHub Pages error page
 robots.txt, sitemap.xml
 ```
@@ -49,9 +51,9 @@ robots.txt, sitemap.xml
 - **Copy / translations** — edit the text in `index.html` and the matching
   strings in the `copy` object at the top of `main.js` (English and Uzbek).
   Keep both languages in sync.
-- **Projects** — update the `.project` blocks in `index.html`, the screenshots
-  in `assets/projects/`, and the `data-preview*` attributes used by the hover
-  preview. Keep the `-720.jpg` variants for mobile thumbnails.
+- **Projects** — update the `.project` blocks in `index.html` and the
+  screenshots in `assets/projects/`. Each card carries its own artwork; keep the
+  `-720.jpg` / `-720.webp` variants for small screens.
 - **Services / toolbox** — edit the Services section in `index.html`; the
   lists are plain markup.
 - **Colours and type** — the palette and type stacks live in the `:root` and
@@ -63,23 +65,22 @@ robots.txt, sitemap.xml
   and footer of `index.html`, and in `main.js` for the copy-to-clipboard
   address.
 
-## Liquid Glass study
+## Design — Liquid Glass
 
-`glass/` is a separate, self-contained page that re-imagines the portfolio in
-Apple's Liquid Glass language (iOS 26 / macOS Tahoe 26): floating frosted dock,
-pointer-lit rim highlights, spring motion, a tinted primary button, a mobile
-tab bar and a circular theme reveal.
+The site follows Apple's Liquid Glass language (iOS 26 / macOS Tahoe 26): a
+floating glass navigation bar, a mobile tab bar with a morphing selection pill,
+pointer-lit rim highlights and specular sheen, a tinted-glass primary action, a
+circular theme reveal and spring motion throughout. One rule shapes it: **glass is the
+control layer, content stays solid and legible.** The dock also re-tints itself
+when it floats over the dark contact slab.
+
+[`LIQUID-GLASS.md`](LIQUID-GLASS.md) explains the principles, the CSS recipes,
+the motion specs, performance limits and accessibility. `glass/` keeps the
+original standalone study — its own CSS and JS — as a reference implementation:
 
 ```bash
 python3 -m http.server 4173   # then open /glass/
 ```
-
-- [`glass/glass.css`](glass/glass.css) — the material and motion system
-- [`glass/glass.js`](glass/glass.js) — behaviour, no dependencies
-- [`LIQUID-GLASS.md`](LIQUID-GLASS.md) — the playbook: principles, recipes,
-  motion specs, performance and accessibility notes
-
-The main portfolio and this study live side by side, with their own CSS and JavaScript.
 
 ## Deploy
 
@@ -95,10 +96,11 @@ To use a custom domain:
 
 ## Accessibility and performance
 
-- Skip link, visible focus styles, keyboard-trapped mobile menu, labelled
-  controls and `aria-current` navigation state
-- `prefers-reduced-motion` disables the loader, smooth scrolling, cursor and
-  decorative animation, and renders all content immediately
+- Skip link, visible focus styles, labelled controls, `aria-current`
+  navigation state, a mobile tab bar and a solid fallback under
+  `prefers-reduced-transparency`
+- `prefers-reduced-motion` disables the loader, smooth scrolling, pointer
+  light and decorative animation, and renders all content immediately
 - Theme and language preferences persist in `localStorage`; the intro loader
   runs once per session on larger screens and is skipped on phones, save-data
   and slow connections

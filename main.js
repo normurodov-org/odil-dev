@@ -43,9 +43,11 @@
   const preview = $('#work-preview');
   const marqueeTrack = $('#marquee-track');
   const marqueeGroup = marqueeTrack ? marqueeTrack.firstElementChild : null;
+  const tabbar = document.getElementById('tabbar');
 
   let menuOpen = false;
   let headerLockUntil = 0;
+  let hashLockUntil = 0;
   let currentLang = 'en';
   let lenis = null;
 
@@ -59,6 +61,7 @@
       'nav.about': `About`,
       'nav.services': `Services`,
       'nav.contact': `Contact`,
+      'cta.hire': `Hire me`,
       'a11y.skip': `Skip to content`,
       'a11y.language': `Language`,
       'menu.label': `Menu`,
@@ -94,10 +97,11 @@
       'stat.reply': `Reply time`,
       'about.languages': `Languages I speak`,
       'work.label': `Work`,
-      'work.note': `Live products, built end to end`,
+      'work.note': `Client work, built end to end`,
       'work.title': `Selected <em>work</em>`,
-      'work.intro': `Three products, three different problems. Each one is live — open a link and take a look.`,
+      'work.intro': `Three products, three different problems. IQBOL is live; NeonShop and PaintHack are private client work.`,
       'work.live': `Live`,
+      'work.private': `Private`,
       'project1.desc': `A Telegram-first digital storefront with automated order flow, product management and a clean buying experience.`,
       'project2.desc': `A product catalogue and lead-generation website for a professional car paint and equipment brand in Qarshi.`,
       'project3.desc': `A warm, multilingual restaurant site with a full digital menu, gallery, reviews and a table-booking flow.`,
@@ -146,6 +150,7 @@
       'nav.about': `Men haqimda`,
       'nav.services': `Xizmatlar`,
       'nav.contact': `Aloqa`,
+      'cta.hire': `Ishga taklif`,
       'a11y.skip': `Kontentga o‘tish`,
       'a11y.language': `Til`,
       'menu.label': `Menyu`,
@@ -181,10 +186,11 @@
       'stat.reply': `Javob vaqti`,
       'about.languages': `Men biladigan tillar`,
       'work.label': `Ishlar`,
-      'work.note': `Jonli mahsulotlar`,
+      'work.note': `Mijoz loyihalari, boshdan oxirigacha`,
       'work.title': `Tanlangan <em>ishlar</em>`,
-      'work.intro': `Uchta mahsulot, uchta turli muammo. Har biri jonli — havolani ochib ko‘ring.`,
+      'work.intro': `Uchta mahsulot, uchta turli muammo. IQBOL ochiq; NeonShop va PaintHack — maxfiy mijoz loyihalari.`,
       'work.live': `Jonli`,
+      'work.private': `Maxfiy`,
       'project1.desc': `Telegram’ga asoslangan raqamli do‘kon: avtomatik buyurtma oqimi, mahsulot boshqaruvi va qulay xarid tajribasi.`,
       'project2.desc': `Qarshidagi professional avto bo‘yoq va jihozlar brendi uchun mahsulot katalogi va mijozlar jalb qiluvchi sayt.`,
       'project3.desc': `Issiq va ko‘p tilli restoran sayti: to‘liq raqamli menyu, galereya, sharhlar va stol bron qilish oqimi.`,
@@ -256,7 +262,7 @@
   function applyTheme(theme, persist = true) {
     root.dataset.theme = theme === 'dark' ? 'dark' : 'light';
     const isDark = currentTheme() === 'dark';
-    if (themeMeta) themeMeta.setAttribute('content', isDark ? '#121110' : '#f2efe7');
+    if (themeMeta) themeMeta.setAttribute('content', isDark ? '#0b0a09' : '#f4f1ea');
     updateThemeLabel();
     if (persist) {
       try { localStorage.setItem(THEME_KEY, currentTheme()); } catch (error) { /* ignore */ }
@@ -268,11 +274,36 @@
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
       const next = currentTheme() === 'dark' ? 'light' : 'dark';
-      if (typeof document.startViewTransition === 'function' && !prefersReduced) {
-        document.startViewTransition(() => applyTheme(next));
-      } else {
+
+      if (typeof document.startViewTransition !== 'function' || prefersReduced) {
         applyTheme(next);
+        return;
       }
+
+      const box = themeToggle.getBoundingClientRect();
+      const x = box.left + box.width / 2;
+      const y = box.top + box.height / 2;
+      const radius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      const transition = document.startViewTransition(() => applyTheme(next));
+      transition.ready.then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${radius}px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 640,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        );
+      }).catch(() => {});
     });
   }
 
@@ -419,6 +450,16 @@
     if (progressBar) {
       progressBar.style.transform = `scaleX(${Math.max(0, Math.min(1, progress))})`;
     }
+    document.body.classList.toggle('is-scrolled', scroll > 24);
+
+    if (tabbar) {
+      const nearEnd = scroll + window.innerHeight > document.documentElement.scrollHeight - 120;
+      if (nearEnd) tabbar.classList.remove('is-hidden');
+      else if (data.direction === 1 && scroll > 220) tabbar.classList.add('is-hidden');
+      else if (data.direction === -1 || scroll < 140) tabbar.classList.remove('is-hidden');
+    }
+
+    updateHeaderTone();
     if (!header) return;
     header.classList.toggle('is-scrolled', scroll > 24);
 
@@ -428,13 +469,24 @@
       return;
     }
     if (typeof data.direction === 'number') {
-      if (data.direction === 1 && data.velocity > 2 && scroll > 240) {
+      if (data.direction === 1 && data.velocity > 5 && scroll > 320) {
         header.classList.add('is-hidden');
       } else if (data.direction === -1 || scroll < 160) {
         header.classList.remove('is-hidden');
       }
     }
   }
+
+  const contactSection = document.getElementById('contact');
+
+  function updateHeaderTone() {
+    if (!header || !contactSection) return;
+    const bounds = contactSection.getBoundingClientRect();
+    const line = 74;
+    header.classList.toggle('is-on-dark', bounds.top <= line && bounds.bottom >= line);
+  }
+
+  updateHeaderTone();
 
   if (lenis) {
     lenis.on('scroll', onScroll);
@@ -669,6 +721,7 @@
   function scrollToTarget(target, { focus = false, updateHistory = false } = {}) {
     if (!target) return;
     headerLockUntil = performance.now() + 1500;
+    hashLockUntil = performance.now() + 1600;
     if (header) header.classList.remove('is-hidden');
 
     const isTop = target.id === 'top';
@@ -676,7 +729,7 @@
       if (lenis) lenis.scrollTo(0, { duration: 1.4 });
       else window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
     } else if (lenis) {
-      lenis.scrollTo(target, { offset: -78, duration: 1.35 });
+      lenis.scrollTo(target, { offset: -92, duration: 1.35 });
     } else {
       target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
     }
@@ -978,6 +1031,7 @@
   if (toTop) {
     toTop.addEventListener('click', () => {
       headerLockUntil = performance.now() + 1200;
+      hashLockUntil = performance.now() + 1400;
       if (header) header.classList.remove('is-hidden');
       if (lenis) lenis.scrollTo(0, { duration: 1.4 });
       else window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
@@ -994,6 +1048,9 @@
     .map((id) => document.getElementById(id))
     .filter(Boolean);
 
+  const tabPill = $('.tabbar__pill');
+  const tabLinks = $$('.tabbar a[data-nav]');
+
   function setActiveNav(id) {
     navLinks.forEach((link) => {
       const active = link.dataset.nav === id;
@@ -1001,6 +1058,22 @@
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
+
+    const index = tabLinks.findIndex((link) => link.dataset.nav === id);
+    if (tabPill && index >= 0) {
+      tabPill.style.transform = `translateX(${index * 100}%)`;
+    }
+
+    // keep the address bar in step with what is on screen
+    if (performance.now() < hashLockUntil) return;
+
+    if (id === 'top') {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    } else if (window.location.hash !== `#${id}`) {
+      history.replaceState(null, '', `#${id}`);
+    }
   }
 
   if ('IntersectionObserver' in window && navSections.length) {
@@ -1012,6 +1085,70 @@
     }, { rootMargin: '-32% 0px -56% 0px', threshold: 0 });
 
     navSections.forEach((section) => spy.observe(section));
+  }
+
+  /* -----------------------------------------------------------------
+     Press light — the material illuminates from within on touch
+  ----------------------------------------------------------------- */
+
+  const pressTargets = $$('.glass, .btn, .tabbar a');
+  pressTargets.forEach((element) => {
+    if (!element.querySelector(':scope > .glow')) {
+      const glow = document.createElement('span');
+      glow.className = 'glow';
+      glow.setAttribute('aria-hidden', 'true');
+      element.appendChild(glow);
+    }
+
+    element.addEventListener('pointerdown', (event) => {
+      const bounds = element.getBoundingClientRect();
+      element.style.setProperty('--px', `${event.clientX - bounds.left}px`);
+      element.style.setProperty('--py', `${event.clientY - bounds.top}px`);
+      element.classList.add('is-pressed');
+    }, { passive: true });
+
+    const release = () => element.classList.remove('is-pressed');
+    element.addEventListener('pointerup', release, { passive: true });
+    element.addEventListener('pointercancel', release, { passive: true });
+    element.addEventListener('pointerleave', release, { passive: true });
+  });
+
+  /* -----------------------------------------------------------------
+     Pointer light — glass and prominent buttons answer the cursor
+  ----------------------------------------------------------------- */
+
+  if (finePointer && !prefersReduced) {
+    const lit = $$('.glass, .btn');
+
+    lit.forEach((element) => {
+      let frame = 0;
+      let px = 0;
+      let py = 0;
+
+      const paint = () => {
+        frame = 0;
+        const bounds = element.getBoundingClientRect();
+        element.style.setProperty('--mx', `${px}px`);
+        element.style.setProperty('--my', `${py}px`);
+        element.style.setProperty(
+          '--ang',
+          `${(Math.atan2(py - bounds.height / 2, px - bounds.width / 2) * 180) / Math.PI}deg`
+        );
+      };
+
+      element.addEventListener('pointermove', (event) => {
+        const bounds = element.getBoundingClientRect();
+        px = event.clientX - bounds.left;
+        py = event.clientY - bounds.top;
+        element.style.setProperty('--near', '1');
+        if (!frame) frame = window.requestAnimationFrame(paint);
+      }, { passive: true });
+
+      element.addEventListener('pointerleave', () => {
+        element.style.setProperty('--near', '0');
+        element.style.setProperty('--ang', '145deg');
+      });
+    });
   }
 
   /* -----------------------------------------------------------------
